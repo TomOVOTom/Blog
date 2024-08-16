@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的Vue博客</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #app {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .post h2 {
+            color: #333;
+        }
+        .post-meta {
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>{{ blogTitle }}</h1>
+        </header>
+        <main>
+            <article v-for="post in posts" :key="post.id" class="post">
+                <h2>{{ post.title }}</h2>
+                <p class="post-meta">发布于 {{ post.date }} | 作者: {{ post.author }}</p>
+                <p>{{ post.content }}</p>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                blogTitle: '我的Vue博客',
+                posts: [
+                    {
+                        id: 1,
+                        title: '第一篇博客文章',
+                        date: '2023-04-15',
+                        author: '张三',
+                        content: '这是我的第一篇博客文章。Vue.js真是一个很棒的前端框架！'
+                    },
+                    {
+                        id: 2,
+                        title: '学习Vue.js的心得',
+                        date: '2023-04-16',
+                        author: '李四',
+                        content: '今天我学习了Vue.js的组件和生命周期钩子，感觉收获很大。'
+                    },
+                    {
+                        id: 3,
+                        title: '使用Vue构建博客的体验',
+                        date: '2023-04-17',
+                        author: '王五',
+                        content: '使用Vue构建博客真的很简单，我很喜欢这种开发方式。'
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
